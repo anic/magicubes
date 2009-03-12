@@ -6,7 +6,7 @@ package magiccube.game.animation;
  */
 
 /**
- * 可动画话的接口
+ * 可动画化的接口
  * @author Anic
  */
 public interface IAnimation {
