@@ -40,11 +40,51 @@ public class FaceCanvas extends GameCanvas {
         Graphics g = this.getGraphics();
         g.setColor(0);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        int edge = this.getWidth() / 2 - 10;
+        int space = 10;
+        int edge = ((this.getWidth() / 2) < (this.getHeight() / 3)) ? this.getWidth() / 2 : this.getHeight() / 3;
+        edge -= space;
+
         int[] colors = faceEngine.getFace(0);
-        drawColorPiece(g, 0, 0, edge, edge, colors);
+        int x, y;
+        x = 0;
+        y = 0;
+        drawColorPiece(g, x, y, edge, edge, colors);
+        drawString(g, x, y, "左");
+
+        x += edge + space;
+        colors = faceEngine.getFace(1);
+        drawColorPiece(g, x, y, edge, edge, colors);
+        drawString(g, x, y, "右");
+
+
+        x = 0;
+        y += edge + space;
+        colors = faceEngine.getFace(2);
+        drawColorPiece(g, x, y, edge, edge, colors);
+        drawString(g, x, y, "下");
+
+        x += edge + space;
+        colors = faceEngine.getFace(3);
+        drawColorPiece(g, x, y, edge, edge, colors);
+        drawString(g, x, y, "上");
+
+        x = 0;
+        y += edge + space;
+        colors = faceEngine.getFace(4);
+        drawColorPiece(g, x, y, edge, edge, colors);
+        drawString(g, x, y, "后");
+
+        x += edge + space;
+        colors = faceEngine.getFace(5);
+        drawColorPiece(g, x, y, edge, edge, colors);
+        drawString(g, x, y, "前");
         flushGraphics();
-        
+
+    }
+
+    private void drawString(Graphics g, int x, int y, String text) {
+        g.setColor(128, 0, 0);
+        g.drawString(text, x, y, 0);
     }
 
     private void drawColorPiece(Graphics g, int x, int y, int width, int height, int[] pieces) {
@@ -58,7 +98,7 @@ public class FaceCanvas extends GameCanvas {
             }
         }
 
-        
+
 
     }
 

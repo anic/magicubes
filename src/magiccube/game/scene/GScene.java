@@ -16,7 +16,7 @@ import magiccube.game.engine.FaceCanvas;
 import magiccube.game.engine.SceneRotator;
 
 
-//TODO:优化时不采用浮点数运算
+
 /**
  * 游戏场景
  * @author Anic
@@ -104,6 +104,7 @@ public class GScene implements IScene, MessageBoxLayer.IEventListener {
         rotator.resetCamera(game.getCanvas().getWidth(), game.getCanvas().getHeight(), getCameraRadius());
 
         proxy = new SceneSwitchProxy(cubeEngine.getCamera());
+        //测试作用
         fcanvas = new FaceCanvas(((CubeBasedEngine) cubeEngine).getFaceEngine(), game.getMIDlet(), game.getCanvas());
     }
 

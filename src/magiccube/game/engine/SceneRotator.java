@@ -8,6 +8,7 @@ import javax.microedition.m3g.Camera;
 import javax.microedition.m3g.Transform;
 import magiccube.util.MathUtil;
 
+//TODO:优化时不采用浮点数运算
 /**
  * 控制游戏场景转动的类
  * @author Anic
@@ -18,16 +19,37 @@ public class SceneRotator {
     private static final int INDEX_X = 0;
     private static final int INDEX_Y = 1;
     private static final int INDEX_Z = 2;
-    private Transform screenTrans; //记录right,up,camera position的矩阵
-    private float[] screenMatrix;   //对应的矩阵
-    private boolean matrixChanged;  //记录transform 和矩阵是否变换了
+    /**
+     * 记录right,up,camera position的矩阵
+     */
+    private Transform screenTrans;
+    /**
+     * 对应的矩阵
+     */
+    private float[] screenMatrix;   
+    /**
+     * 记录transform 和矩阵是否变换了
+     */
+    private boolean matrixChanged;  
     private float[][] last;
     private int[][] lastAxis;
     private Camera camera;
 
-    //在position中的索引下标
-    private static final int INDEX_RIGHT = 0;   //右方向的索引下标
+    
+    /**
+     * 在position中的索引下标,右方向
+     */
+    private static final int INDEX_RIGHT = 0;
+
+    /**
+     * 在position中的索引下标,上方向
+     */
     private static final int INDEX_UP = 1;
+
+
+    /**
+     * 在position中的索引下标,摄像机朝向
+     */
     private static final int INDEX_CAMERA = 2;
 
     /**
