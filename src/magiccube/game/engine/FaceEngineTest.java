@@ -7,6 +7,7 @@
 package magiccube.game.engine;
 
 import jmunit.framework.cldc10.*;
+import magiccube.util.Debug;
 
 /**
  * @author Administrator
@@ -15,7 +16,7 @@ public class FaceEngineTest extends TestCase {
 
     public FaceEngineTest() {
         //The first parameter of inherited constructor is the number of test cases
-        super(1, "FaceEngineTest");
+        super(2, "FaceEngineTest");
     }
 
     public void test(int testNumber) throws Throwable {
@@ -37,6 +38,7 @@ public class FaceEngineTest extends TestCase {
         int modeIndex_1 = 0;
         int clockwise_1 = 1;
         instance.rotate(mode_1, modeIndex_1, clockwise_1);
+        Debug.println("testRotate2");
         compare(instance, FaceEngine.FACE_FONT, new int[]{
                     FaceEngine.FACE_TOP,
                     FaceEngine.FACE_FONT,
@@ -148,7 +150,7 @@ public class FaceEngineTest extends TestCase {
                     FaceEngine.FACE_BACK,
                     FaceEngine.FACE_LEFT,
                     FaceEngine.FACE_LEFT,
-                     FaceEngine.FACE_BACK,
+                    FaceEngine.FACE_BACK,
                     FaceEngine.FACE_LEFT,
                     FaceEngine.FACE_LEFT,
                     FaceEngine.FACE_BOTTOM,
@@ -161,7 +163,7 @@ public class FaceEngineTest extends TestCase {
                     FaceEngine.FACE_BACK,
                     FaceEngine.FACE_LEFT,
                     FaceEngine.FACE_LEFT,
-                     FaceEngine.FACE_BACK,
+                    FaceEngine.FACE_BACK,
                     FaceEngine.FACE_LEFT,
                     FaceEngine.FACE_LEFT,
                     FaceEngine.FACE_BACK,

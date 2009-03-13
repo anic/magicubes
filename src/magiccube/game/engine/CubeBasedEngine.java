@@ -24,6 +24,10 @@ import magiccube.util.DrawingUtil;
  */
 public class CubeBasedEngine extends MagicCubeEngine {
 
+    protected void afterModifyCubeByMode() {
+        this.setSelection(true);
+    }
+
     public Camera getCamera() {
         return this.camera;
     }
@@ -95,6 +99,8 @@ public class CubeBasedEngine extends MagicCubeEngine {
     }
 
     protected void beforeModifyCubeByMode(int mode, int index, int clockwise) {
+        this.setSelection(false);
+
         //indexµÄ·¶Î§Ö»ÓÐ0£¬1£¬2
         switch (mode) {
             case FACE_AXIS_X:
