@@ -95,9 +95,6 @@ public abstract class MagicCubeEngine implements IAnimation {
      */
     public void setMode(int mode, int index, int clockwise) {
 
-        //旧的被选中的cube
-        setSelection(false);
-
         //修改选中的cube
         beforeModifyCubeByMode(mode, index, clockwise);
         this.currentMode = mode;
@@ -105,12 +102,14 @@ public abstract class MagicCubeEngine implements IAnimation {
         this.currentModeClockwise = clockwise;
 
         //修改新的Cube为选中模式
-        setSelection(true);
+        afterModifyCubeByMode();
 
         if (eventListener != null) {
             eventListener.onSelectionChanged(this);
         }
     }
+
+    protected abstract void afterModifyCubeByMode();
 
     /**
      * 真正实现，只需要修改selectedCube即可，不需要修改是否高亮
@@ -212,11 +211,13 @@ public abstract class MagicCubeEngine implements IAnimation {
 
     }
 
-    /**
-     * 设置选中的区域
-     * @param selection
-     */
-    public abstract void setSelection(boolean selection);
+
+
+//    /**
+//     * 设置选中的区域
+//     * @param selection
+//     */
+//    public abstract void setSelection(boolean selection);
 
     /**
      * 获得clockwise的另外一个值
