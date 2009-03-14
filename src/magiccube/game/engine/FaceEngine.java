@@ -200,9 +200,10 @@ public class FaceEngine {
      * 保存为字节流
      * @return 字节流
      */
-    public byte[] toByte() {
-        byte[] result = new byte[6 * size * size + 1];
+    public byte[] toBytes(byte id) {
+        byte[] result = new byte[2 + 6 * size * size];
         int index = 0;
+        result[index++] = id;
         result[index++] = (byte) size;
         for (int i = 0; i < 6; ++i) {
             for (int j = 0; j < size * size; ++j) {

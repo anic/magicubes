@@ -67,7 +67,9 @@ public class TaskCanvas extends GameCanvas {
             for (int i = 0; i < tasks.length; ++i) {
                 tasks[i].run();
             }
-
+            //完成任务后，timer取消
+            timer.cancel();
+            
             if (canvas != null) {
                 Display.getDisplay(midlet).setCurrent(canvas);
             } else if (callback != null) {
@@ -99,8 +101,8 @@ public class TaskCanvas extends GameCanvas {
         this.title = name;
 
         //绘制
-        Timer timer = new Timer();
-        timer.schedule(new DrawingThread(), 0, 1000/60);
+        timer = new Timer();
+        timer.schedule(new DrawingThread(), 0, 1000 / 60);
 
         //执行任务
         Thread taskThread = new Thread(new TaskThread(this));
@@ -111,7 +113,7 @@ public class TaskCanvas extends GameCanvas {
     private MIDlet midlet;
     private IEventListener callback;
     private Canvas canvas;
-    
+    private Timer timer;
 
     /**
      * 绘制加载条
@@ -135,7 +137,6 @@ public class TaskCanvas extends GameCanvas {
         int textY = blockY - Common.FONT_DEFAULT.getHeight() - 10;
         g.drawString(title, textX, textY, 0);
     }
-
     private int defaultProcess = MAX / 10;
     private int current = -defaultProcess;
     private static final int MAX = 100;

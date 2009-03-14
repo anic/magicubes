@@ -233,9 +233,10 @@ public class Cube extends CubeBase {
 
     /**
      * 生成流对象
+     * @param prefix
      * @return
      */
-    public byte[] toBytes() {
+    public byte[] toBytes(byte[] prefix) {
 
         //x,y,z,id,matrix(orientation),faces
         float[] matrix = new float[4];
@@ -245,6 +246,9 @@ public class Cube extends CubeBase {
         java.io.DataOutputStream os;// = new java.io.DataOutputStream();
         try {
             os = new java.io.DataOutputStream(baos);
+
+            os.write(prefix, 0, prefix.length);
+
             os.writeFloat(x);
             os.writeFloat(y);
             os.writeFloat(z);
