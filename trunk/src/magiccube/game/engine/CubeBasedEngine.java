@@ -61,7 +61,7 @@ public class CubeBasedEngine extends MagicCubeEngine {
     private World world;
     private ArrowSelector arrow;
     private Camera camera;
-
+    private AnimationEngine localEngine;
     /**
      * 创建基于Cube的魔方引擎
      * @param game 游戏引擎
@@ -70,15 +70,9 @@ public class CubeBasedEngine extends MagicCubeEngine {
     public CubeBasedEngine(GameEngine game, AnimationEngine localEngine) {
         super(game.getGameSize(), null);
 
-        //修改响应对象
-        arrow = new ArrowSelector(game.getGameSize(),
-                game.getAnimationEngine(),
-                localEngine);
 
-
-
-        super.eventListener = arrow;
         this.game = game;
+        this.localEngine = localEngine;
 
         //初始化，其他与Size有关的初始化，在init里面完成
         axis = new int[3];
@@ -109,7 +103,7 @@ public class CubeBasedEngine extends MagicCubeEngine {
                 for (int i = 0; i < indexOfArrayX.length; ++i) {
                     selected_cubes_index[i] = indexOfArrayX[i] + index;
                     selected_cubes_array[i] = this.cubes[selected_cubes_index[i]];
-                    
+
                 }
 
                 break;
@@ -189,6 +183,14 @@ public class CubeBasedEngine extends MagicCubeEngine {
         } else {
             createCubes();
         }
+
+        //修改响应对象
+        arrow = new ArrowSelector(size,
+                game.getAnimationEngine(),
+                localEngine);
+        super.eventListener = arrow;
+
+
 
         //设置对应
         setMode(getMode(), getModeIndex(), getClockwise());
@@ -294,23 +296,17 @@ public class CubeBasedEngine extends MagicCubeEngine {
             deleteRecord();
             RecordStore rs = RecordStore.openRecordStore(STORE_NAME, true);
             rs.addRecord(new byte[]{ID_VERSION, (byte) size}, 0, 2);
+            byte[] id = new byte[2];
+            id[0] = ID_CUBE;
             for (int i = 0; i < cubes.length; ++i) {
                 if (cubes[i] != null) {
-                    byte[] buffer = cubes[i].toBytes();
-                    byte[] id = new byte[buffer.length + 2];
-                    id[0] = ID_CUBE;
-                    id[1] = (byte) i;
-                    ArrayUtil.copyArray(buffer, 0, buffer.length, id, 2);
-                    rs.addRecord(id, 0, id.length);
-
+                    id[1] = (byte) i; //因为5*5*5 = 125<128所以用byte存储是可以的
+                    byte[] buffer = cubes[i].toBytes(id);
+                    rs.addRecord(buffer, 0, buffer.length);
                 }
             }
-            byte[] buffer = faceEngine.toByte();
-            byte[] bufFace = new byte[buffer.length + 1];
-            bufFace[0] = ID_FACE;
-            ArrayUtil.copyArray(buffer, 0, buffer.length, bufFace, 1);
-            rs.addRecord(bufFace, 0, bufFace.length);
-
+            byte[] buffer = faceEngine.toBytes(ID_FACE);
+            rs.addRecord(buffer, 0, buffer.length);
             rs.closeRecordStore();
 
         } catch (Exception e) {
@@ -416,7 +412,7 @@ public class CubeBasedEngine extends MagicCubeEngine {
         angle = (getClockwise() == MODE_CLOCKWISE) ? 90f : -90f;
         //转动轴
         this.getAxis(this.axis);
-        totalAngle =0f;
+        totalAngle = 0f;
 
     }
 
