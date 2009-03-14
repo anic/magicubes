@@ -159,12 +159,12 @@ public class GCanvas extends GameCanvas implements Runnable {
                 return key;
         }
     }
-//
-//    protected void pointerPressed(int x, int y) {
-//        game.getPointerCommand().save(Common.EVENT_PRESSED, x, y);
-//    }
-//
-//    protected void pointerReleased(int x, int y) {
-//        game.getPointerCommand().save(Common.EVENT_RELEASED, x, y);
-//    }
+
+    protected void pointerPressed(int x, int y) {
+        game.getPointerCommand().save(Common.EVENT_PRESSED, x, y);
+    }
+
+    protected void pointerReleased(int x, int y) {
+        game.getPointerCommand().save(Common.EVENT_RELEASED, x, y);
+    }
 }
