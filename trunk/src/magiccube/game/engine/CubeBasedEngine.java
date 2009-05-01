@@ -407,7 +407,6 @@ public class CubeBasedEngine extends MagicCubeEngine {
     }
 
     public void before_start(int totalTime) {
-        Debug.println("mode:" + this.getMode() + " index:" + this.getModeIndex() + " clockwise:" + this.getClockwise());
         this.totalTime = totalTime;
         angle = (getClockwise() == MODE_CLOCKWISE) ? 90f : -90f;
         //×ª¶¯Öá

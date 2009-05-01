@@ -56,11 +56,11 @@ public class SceneLayer extends GLayer implements AbstractButton.IEventListener 
         int space = 5;
         int x = space;
         int y = height - Common.HEIGHT_ICON - space;
-        buttons[INDEX_7] = new TextButton(x, y, Common.WIDTH_ICON, Common.HEIGHT_ICON, "7", Common.FONT_DEFAULT, this);
+        buttons[INDEX_7] = new TextButton(x, y, Common.WIDTH_ICON, Common.HEIGHT_ICON, "<<", Common.FONT_DEFAULT, this);
         x += Common.WIDTH_ICON + space;
-        buttons[INDEX_9] = new TextButton(x, y, Common.WIDTH_ICON, Common.HEIGHT_ICON, "9", Common.FONT_DEFAULT, this);
+        buttons[INDEX_9] = new TextButton(x, y, Common.WIDTH_ICON, Common.HEIGHT_ICON, ">>", Common.FONT_DEFAULT, this);
         x += Common.WIDTH_ICON + space;
-        buttons[INDEX_5] = new TextButton(x, y, Common.WIDTH_ICON, Common.HEIGHT_ICON, "5", Common.FONT_DEFAULT, this);
+        buttons[INDEX_5] = new TextButton(x, y, Common.WIDTH_ICON, Common.HEIGHT_ICON, "ת", Common.FONT_DEFAULT, this);
 
     }
 

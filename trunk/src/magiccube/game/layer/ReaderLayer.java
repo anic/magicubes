@@ -216,10 +216,10 @@ public class ReaderLayer extends GLayer {
     private void drawShortMenu(Graphics g, int x, int y, int width, int height) {
         if (this.status == STATUS_VIEW) {
             DrawingUtil.drawMenuIcon(g, x + width - menu_icon_width, y, menu_icon_width, menu_icon_height, Common.COLOR_BAR, Common.COLOR_SELECTED, menus[INDEX_VIEW]);
-            DrawingUtil.drawMenuIcon(g, x + width - 2 * menu_icon_width - space, y, menu_icon_width, menu_icon_height, Common.COLOR_BAR, Common.COLOR_SELECTED, "3", Common.FONT_DEFAULT);
+            DrawingUtil.drawMenuIcon(g, x + width - 2 * menu_icon_width - space, y, menu_icon_width, menu_icon_height, Common.COLOR_BAR, Common.COLOR_SELECTED, "ср", Common.FONT_DEFAULT);
         } else if (this.status == STATUS_SHOW) {
             DrawingUtil.drawMenuIcon(g, x + width - menu_icon_width, y, menu_icon_width, menu_icon_height, Common.COLOR_BAR, Common.COLOR_SELECTED, menus[INDEX_SHOW]);
-            DrawingUtil.drawMenuIcon(g, x + width - 2 * menu_icon_width - space, y, menu_icon_width, menu_icon_height, Common.COLOR_BAR, Common.COLOR_SELECTED, "3", Common.FONT_DEFAULT);
+            DrawingUtil.drawMenuIcon(g, x + width - 2 * menu_icon_width - space, y, menu_icon_width, menu_icon_height, Common.COLOR_BAR, Common.COLOR_SELECTED, "ср", Common.FONT_DEFAULT);
         }
 
     }

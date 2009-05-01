@@ -38,7 +38,6 @@ public class FaceEngineTest extends TestCase {
         int modeIndex_1 = 0;
         int clockwise_1 = 1;
         instance.rotate(mode_1, modeIndex_1, clockwise_1);
-        Debug.println("testRotate2");
         compare(instance, FaceEngine.FACE_FONT, new int[]{
                     FaceEngine.FACE_TOP,
                     FaceEngine.FACE_FONT,
