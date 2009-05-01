@@ -62,7 +62,7 @@ public class MenuLayer extends GLayer implements MessageBoxLayer.IEventListener,
         tips[INDEX_RESUME] = "继续游戏(1)";
         tips[INDEX_BACK] = "回主菜单";
         tips[INDEX_REVERSE] = "撤销上步(#)";
-        tips[INDEX_TUTORIAL] = "显示教程(3)";
+        tips[INDEX_TUTORIAL] = "显示教程(右)";
         tips[INDEX_TASK] = "任务信息";
         tips[INDEX_SAVE] = "保存进度";
         tips[INDEX_CAMERA] = "重置镜头(0)";
